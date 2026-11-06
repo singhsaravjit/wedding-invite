@@ -203,9 +203,16 @@ footer{position:relative;z-index:2;text-align:center;padding-block:20px 90px;col
 </div>
 
 
-<audio id="bgm" src="shabad.mp3" preload="none" loop></audio>
-<button class="music paused" id="music" type="button" aria-label="Play shabad" aria-pressed="false">
-  <span class="hint">PLAY SHABAD</span>
+<!-- ============================================================
+     BACKGROUND MUSIC
+     To add or change the song: upload an MP3 named  music.mp3
+     to the same folder as this index.html (replace the old one).
+     No code changes needed. If music.mp3 is missing, the music
+     button simply stays hidden.
+     ============================================================ -->
+<audio id="bgm" src="music.mp3" preload="none" loop></audio>
+<button class="music paused" id="music" type="button" aria-label="Play music" aria-pressed="false" hidden>
+  <span class="hint">PLAY MUSIC</span>
   <svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
   <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
 </button>
@@ -405,14 +412,16 @@ if(reduce) openCurtain(); else setTimeout(openCurtain,10000);
 
 document.getElementById("tap").addEventListener("click",openCurtain);
 
-// ---- background shabad: starts when the guest taps the seal (browsers need a tap before sound) ----
+// ---- background music (music.mp3): starts when the guest taps the seal (browsers need a tap before sound) ----
 const audio=document.getElementById("bgm"), mBtn=document.getElementById("music");
-function setPlaying(on){ mBtn.classList.toggle("paused",!on); mBtn.setAttribute("aria-pressed",String(on)); mBtn.setAttribute("aria-label",on?"Pause shabad":"Play shabad"); }
+function setPlaying(on){ mBtn.classList.toggle("paused",!on); mBtn.setAttribute("aria-pressed",String(on)); mBtn.setAttribute("aria-label",on?"Pause music":"Play music"); }
 function play(){ audio.volume=.6; audio.play().then(()=>setPlaying(true)).catch(()=>setPlaying(false)); }
 audio.addEventListener("pause",()=>setPlaying(false));
 audio.addEventListener("play",()=>setPlaying(true));
 mBtn.addEventListener("click",()=>{ audio.paused?play():audio.pause(); });
-document.getElementById("tap").addEventListener("click",play);
+let hasMusic=false;
+fetch("music.mp3",{method:"HEAD"}).then(r=>{ if(r.ok){ hasMusic=true; mBtn.hidden=false; } }).catch(()=>{});
+document.getElementById("tap").addEventListener("click",()=>{ if(hasMusic) play(); });
 
 // ---- countdown ----
 function tick(){ let ms=WEDDING-Date.now(); if(ms<0)ms=0;
