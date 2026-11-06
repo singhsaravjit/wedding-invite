@@ -127,6 +127,19 @@ p{margin:0 0 1em}
 .closing .families{color:var(--muted);font-style:italic;font-size:.95rem}
 footer{text-align:center;padding-block:30px 50px;color:var(--muted);font-family:var(--f-label);letter-spacing:.2em;font-size:.7rem}
 
+/* music */
+.music{position:fixed;z-index:40;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);background:rgba(31,6,16,.85);color:var(--gold-soft);cursor:pointer;
+  display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4);backdrop-filter:blur(4px)}
+.music:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+.music svg{width:22px;height:22px}
+.music .bars{display:flex;gap:3px;align-items:flex-end;height:18px}
+.music .bars i{width:3px;background:var(--gold);border-radius:1px;height:30%;animation:eq 1s ease-in-out infinite}
+.music .bars i:nth-child(2){animation-delay:.2s}.music .bars i:nth-child(3){animation-delay:.4s}.music .bars i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:30%}50%{height:100%}}
+.music.paused .bars{display:none}.music:not(.paused) .play{display:none}
+.music .hint{position:absolute;right:60px;white-space:nowrap;font-family:var(--f-label);font-size:.7rem;letter-spacing:.15em;color:var(--gold-soft);background:rgba(31,6,16,.85);padding:6px 10px;border-radius:3px;border:1px solid rgba(217,166,80,.35)}
+.music:not(.paused) .hint{display:none}
 /* reveal */
 .reveal{transition:opacity .9s ease,transform .9s ease}
 .js .reveal.pending{opacity:.001;transform:translateY(24px)}
@@ -138,6 +151,13 @@ footer{text-align:center;padding-block:30px 50px;color:var(--muted);font-family:
   <div class="panel left"></div><div class="panel right"></div>
   <button class="tap" id="tap" type="button"><span class="ek" aria-hidden="true">ੴ</span>TAP TO OPEN</button>
 </div>
+
+<audio id="shabad" src="shabad.mp3" preload="none" loop></audio>
+<button class="music paused" id="music" type="button" aria-label="Play shabad" aria-pressed="false">
+  <span class="hint">PLAY SHABAD</span>
+  <svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
 
 <main>
   <header class="hero wrap">
@@ -244,7 +264,13 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 function openCurtain(){ if(curtain.classList.contains("open"))return;
   curtain.classList.add("open"); curtain.setAttribute("aria-hidden","true");
   setTimeout(()=>curtain.classList.add("gone"), reduce?0:1700); }
-document.getElementById("tap").addEventListener("click",openCurtain);
+// music: starts when the guest taps the curtain (browsers need a tap before sound)
+const audio=document.getElementById("shabad"), mBtn=document.getElementById("music");
+function setPlaying(on){ mBtn.classList.toggle("paused",!on); mBtn.setAttribute("aria-pressed",String(on)); mBtn.setAttribute("aria-label",on?"Pause shabad":"Play shabad"); }
+function play(){ audio.volume=.7; audio.play().then(()=>setPlaying(true)).catch(()=>setPlaying(false)); }
+audio.addEventListener("pause",()=>setPlaying(false));
+mBtn.addEventListener("click",()=>{ audio.paused?play():audio.pause(); });
+document.getElementById("tap").addEventListener("click",()=>{ play(); openCurtain(); });
 if(reduce) openCurtain(); else setTimeout(openCurtain,3500);
 
 // countdown
