@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="Sandeep & Saravjit · 12 December 2026">
+<meta property="og:description" content="Together with our families, we joyfully invite you to our wedding in Hiranagar.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Sandeep &amp; Saravjit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Marcellus+SC&family=Mukta+Mahee:wght@500&display=swap">
+<style>
+/* Layout: a single tall scroll, like unrolling a card — curtain, garlanded invitation, ceremonies on a timeline, venue, RSVP, blessing. Deliberately one dark, festive theme. */
+:root{
+  --maroon:#3a0d1c; --maroon-deep:#1f0610; --wine:#5c1530;
+  --gold:#d9a650; --gold-soft:#f0d49a; --ivory:#fbf3e4; --ink:#4a1424;
+  --marigold:#f0861c; --rose:#d9577a; --muted:#c9a9a0;
+  --f-display:"Rozha One","Playfair Display",Georgia,serif;
+  --f-body:"Spectral",Georgia,"Times New Roman",serif;
+  --f-label:"Marcellus SC","Trajan Pro",Georgia,serif;
+  --f-gurmukhi:"Mukta Mahee","Noto Sans Gurmukhi",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--maroon-deep);color:var(--ivory);font-family:var(--f-body);font-size:17px;line-height:1.65;overflow-x:hidden;
+  background-image:radial-gradient(120% 60% at 50% 0%,var(--wine) 0%,transparent 60%),radial-gradient(90% 50% at 50% 100%,var(--maroon) 0%,transparent 70%)}
+.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:72px}
+.label{font-family:var(--f-label);letter-spacing:.22em;font-size:.78rem;color:var(--gold);text-transform:uppercase}
+h2{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,7vw,2.7rem);line-height:1.1;margin:.3em 0 .4em;text-wrap:balance;color:var(--gold-soft)}
+p{margin:0 0 1em}
+.lede{color:var(--muted);max-width:34em}
+
+/* ---------- curtain ---------- */
+.curtain{position:fixed;inset:0;z-index:50;display:flex;pointer-events:auto}
+.curtain .panel{flex:1;height:100%;transition:transform 1.6s cubic-bezier(.7,0,.2,1);
+  background:repeating-linear-gradient(90deg,#2a0812 0 6%,#5a1630 12%,#7a2340 16%,#4a1026 22%,#2a0812 28%);
+  box-shadow:inset 0 -80px 120px rgba(0,0,0,.5)}
+.curtain .left{border-right:2px solid var(--gold)}
+.curtain .right{border-left:2px solid var(--gold)}
+.curtain.open .left{transform:translateX(-102%)}
+.curtain.open .right{transform:translateX(102%)}
+.curtain.open{pointer-events:none}
+.curtain.gone{display:none}
+.tap{position:absolute;left:50%;bottom:calc(12% + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:none;border:0;color:var(--gold-soft);
+  font-family:var(--f-label);letter-spacing:.3em;font-size:.85rem;cursor:pointer;padding:12px 18px;border-bottom:1px solid var(--gold);transition:opacity .5s}
+.tap .ek{display:block;font-family:var(--f-gurmukhi);font-size:2.4rem;letter-spacing:0;margin-bottom:10px;color:var(--gold)}
+.curtain.open .tap{opacity:0}
+.tap:focus-visible{outline:2px solid var(--gold-soft);outline-offset:6px}
+
+/* ---------- hero ---------- */
+.hero{text-align:center;padding-block:96px 56px}
+.hero .ek{font-family:var(--f-gurmukhi);font-size:2.6rem;color:var(--gold);line-height:1}
+.hero .gurbani{font-family:var(--f-gurmukhi);color:var(--gold-soft);font-size:1rem;margin:10px 0 28px}
+.names{font-family:var(--f-display);font-size:clamp(3.4rem,15vw,5.6rem);line-height:.95;color:var(--gold-soft);margin:18px 0;
+  background:linear-gradient(180deg,#fff1cf 0%,var(--gold) 55%,#a8742c 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.names .amp{display:block;font-family:var(--f-body);font-style:italic;font-weight:300;font-size:.45em;line-height:1.4;color:var(--gold);-webkit-text-fill-color:var(--gold)}
+.hero .date{font-family:var(--f-label);letter-spacing:.25em;color:var(--ivory);margin-top:24px}
+.hero .place{color:var(--muted);font-style:italic}
+.rule{width:140px;height:14px;margin:26px auto;background:
+  radial-gradient(circle at 50% 50%,var(--gold) 0 4px,transparent 5px),
+  linear-gradient(var(--gold),var(--gold)) left 50%/56px 1px no-repeat,
+  linear-gradient(var(--gold),var(--gold)) right 50%/56px 1px no-repeat}
+
+/* countdown */
+.count{display:flex;justify-content:center;gap:10px;margin-top:34px;flex-wrap:wrap}
+.count div{min-width:70px;padding:10px 6px;border:1px solid rgba(217,166,80,.35);border-radius:4px;background:rgba(0,0,0,.18)}
+.count b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.9rem;line-height:1.1;color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.count span{font-family:var(--f-label);font-size:.68rem;letter-spacing:.2em;color:var(--muted)}
+
+/* ---------- card with marigold garland ---------- */
+.card{position:relative;background:var(--ivory);color:var(--ink);border-radius:6px;padding:56px 34px 44px;text-align:center;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.card::before,.card::after{content:"";position:absolute;top:0;bottom:0;width:22px;
+  background:radial-gradient(circle at 50% 50%,#ffb347 0 5px,var(--marigold) 6px 9px,#c85a0a 10px,transparent 11px) 0 0/22px 22px repeat-y}
+.card::before{left:4px}.card::after{right:4px}
+.card .top{position:absolute;left:0;right:0;top:4px;height:22px;
+  background:radial-gradient(circle at 50% 50%,#ffb347 0 5px,var(--marigold) 6px 9px,#c85a0a 10px,transparent 11px) 0 0/22px 22px repeat-x}
+.card .torans{position:absolute;left:30px;right:30px;top:24px;height:26px;
+  background:radial-gradient(ellipse 9px 13px at 50% 0,var(--rose) 0 60%,transparent 62%) 0 0/36px 26px repeat-x;opacity:.85}
+.card .label{color:var(--wine)}
+.card h3{font-family:var(--f-display);font-weight:400;font-size:clamp(2.4rem,10vw,3.4rem);line-height:1;color:var(--wine);margin:14px 0 6px}
+.card .full{font-style:italic;color:#7a4652}
+.card .when{font-family:var(--f-display);font-size:1.6rem;color:var(--wine);margin:8px 0 0}
+.card .sub{font-family:var(--f-label);letter-spacing:.2em;font-size:.75rem;color:#9a6a3a}
+.card p{color:#5c2a36}
+.card .rule{background:
+  radial-gradient(circle at 50% 50%,var(--marigold) 0 4px,transparent 5px),
+  linear-gradient(#c8954a,#c8954a) left 50%/56px 1px no-repeat,
+  linear-gradient(#c8954a,#c8954a) right 50%/56px 1px no-repeat}
+
+/* ---------- events ---------- */
+.events{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:18px;position:relative}
+.ev{display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:start;padding:22px 20px;border:1px solid rgba(217,166,80,.28);border-radius:4px;background:linear-gradient(160deg,rgba(92,21,48,.55),rgba(31,6,16,.6))}
+.ev .day{text-align:center;border-right:1px solid rgba(217,166,80,.3);padding-right:14px}
+.ev .day b{display:block;font-family:var(--f-display);font-weight:400;font-size:2.4rem;line-height:1;color:var(--gold-soft)}
+.ev .day span{font-family:var(--f-label);font-size:.7rem;letter-spacing:.2em;color:var(--muted)}
+.ev h4{font-family:var(--f-display);font-weight:400;font-size:1.55rem;margin:0;color:var(--ivory);line-height:1.2}
+.ev .meta{font-family:var(--f-label);font-size:.78rem;letter-spacing:.14em;color:var(--gold);margin:4px 0 6px}
+.ev p{margin:0;color:var(--muted);font-size:.95rem}
+.ev.main{border-color:var(--gold);background:linear-gradient(160deg,rgba(217,166,80,.18),rgba(92,21,48,.6))}
+.ev.tbc{opacity:.75;border-style:dashed}
+
+/* ---------- venue ---------- */
+.venue{border:1px solid rgba(217,166,80,.35);border-radius:200px 200px 6px 6px;padding:70px 26px 34px;text-align:center;background:rgba(0,0,0,.15)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-label);letter-spacing:.18em;font-size:.82rem;text-decoration:none;cursor:pointer;
+  background:var(--gold);color:var(--maroon-deep);border:0;padding:14px 24px;border-radius:2px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--gold-soft);transform:translateY(-1px)}
+.btn:focus-visible{outline:2px solid var(--ivory);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--gold-soft);border:1px solid var(--gold)}
+
+.venues{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px}
+.venues>div{min-width:0}
+.venues .lede{margin:0 auto 16px}
+.sub-l{font-family:var(--f-label);letter-spacing:.18em;font-size:.72rem;color:var(--muted)}
+.vname{font-family:var(--f-display);font-weight:400;font-size:1.8rem;color:var(--gold-soft);margin:4px 0 0;line-height:1.2}
+.maplink{color:var(--gold);white-space:nowrap}
+@media (max-width:520px){.venues{grid-template-columns:1fr}}
+/* ---------- closing ---------- */
+.closing{text-align:center}
+.closing .sig{font-family:var(--f-display);font-size:2.4rem;color:var(--gold-soft);line-height:1.1;margin-top:16px}
+.closing .families{color:var(--muted);font-style:italic;font-size:.95rem}
+footer{text-align:center;padding-block:30px 50px;color:var(--muted);font-family:var(--f-label);letter-spacing:.2em;font-size:.7rem}
+
+/* reveal */
+.reveal{transition:opacity .9s ease,transform .9s ease}
+.js .reveal.pending{opacity:.001;transform:translateY(24px)}
+@media (max-width:420px){.card{padding:56px 28px 40px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .reveal.pending{opacity:1;transform:none}}
+</style>
+
+<div class="curtain" id="curtain" aria-hidden="false">
+  <div class="panel left"></div><div class="panel right"></div>
+  <button class="tap" id="tap" type="button"><span class="ek" aria-hidden="true">ੴ</span>TAP TO OPEN</button>
+</div>
+
+<main>
+  <header class="hero wrap">
+    <div class="ek" aria-label="Ik Onkar">ੴ</div>
+    <div class="gurbani">ਸਤਿਗੁਰ ਪ੍ਰਸਾਦਿ</div>
+    <div class="label">Together with their families</div>
+    <h1 class="names">Sandeep<span class="amp">&amp;</span>Saravjit</h1>
+    <p class="lede" style="margin:0 auto">We joyfully invite you to join us as we begin this new chapter. Your presence, blessings and love will make our celebration complete.</p>
+    <div class="date">12 · DECEMBER · 2026</div>
+    <div class="place">Ummeed Vila, Hiranagar</div>
+    <div class="count" id="count" aria-label="Countdown to the wedding">
+      <div><b id="cd-d">36</b><span>DAYS</span></div>
+      <div><b id="cd-h">00</b><span>HOURS</span></div>
+      <div><b id="cd-m">00</b><span>MINUTES</span></div>
+    </div>
+  </header>
+
+  <section class="wrap reveal" id="invite">
+    <div class="card">
+      <div class="top"></div><div class="torans"></div>
+      <div class="label">We request the honour of your presence</div>
+      <div class="rule"></div>
+      <p>As we begin our forever, surrounded by the family and friends who made us who we are.</p>
+      <h3>Sandeep<br><span style="font-family:var(--f-body);font-style:italic;font-size:.5em">&amp;</span><br>Saravjit</h3>
+      <div class="full">Sandeep Kaur &amp; Saravjit Singh</div>
+      <div class="rule"></div>
+      <div class="sub">Anand Karaj</div>
+      <div class="when">Saturday, 12 December 2026</div>
+      <p style="margin-top:6px">Ummeed Vila, Hiranagar, Jammu</p>
+    </div>
+  </section>
+
+  <section class="wrap reveal" id="events">
+    <div class="label">The celebrations</div>
+    <h2>A wedding told in ceremonies, music and light</h2>
+    <ol class="events">
+      <li class="ev">
+        <div class="day"><b>07</b><span>DEC</span></div>
+        <div><h4>Sukhmani Paath</h4><div class="meta">Monday · 11:00 AM</div><p>At home. Prayers to bless the beginning, followed by langar.</p></div>
+      </li>
+      <li class="ev">
+        <div class="day"><b>07</b><span>DEC</span></div>
+        <div><h4>Sangeet Night</h4><div class="meta">Monday · Evening</div><p>At home, Dollian Jattan. Dhol, boliyan and giddha till late.</p></div>
+      </li>
+      <li class="ev">
+        <div class="day"><b>11</b><span>DEC</span></div>
+        <div><h4>Sagun</h4><div class="meta">Friday · 11:00 AM</div><p>At home. Blessings, shagun and sweets with the family.</p></div>
+      </li>
+      <li class="ev">
+        <div class="day"><b>11</b><span>DEC</span></div>
+        <div><h4>Jaago Night</h4><div class="meta">Friday · 8:00 PM</div><p>At home. Lit jaago, dhol and dancing through the night.</p></div>
+      </li>
+      <li class="ev main">
+        <div class="day"><b>12</b><span>DEC</span></div>
+        <div><h4>Anand Karaj</h4><div class="meta">Saturday · Morning</div><p>Ummeed Vila, Hiranagar. The four laavan, followed by lunch and celebrations.</p></div>
+      </li>
+      <li class="ev">
+        <div class="day"><b>13</b><span>DEC</span></div>
+        <div><h4>Reception</h4><div class="meta">Sunday · 6:00 PM</div><p>Arika Grand, Hiranagar. An evening of dinner, music and celebration. <a class="maplink" href="https://share.google/hMVSz7YfywpmdWzsA" target="_blank" rel="noopener">Directions</a></p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap reveal" id="venue">
+    <div class="venue">
+      <div class="label">The destinations</div>
+      <h2>Where to find us</h2>
+      <div class="venues">
+        <div>
+          <div class="sub-l">Anand Karaj · 12 Dec</div>
+          <h3 class="vname">Ummeed Vila</h3>
+          <p class="lede">Hiranagar, Jammu</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Ummeed+Vila+Hiranagar+Jammu" target="_blank" rel="noopener">OPEN IN MAPS</a>
+        </div>
+        <div>
+          <div class="sub-l">Reception · 13 Dec</div>
+          <h3 class="vname">Arika Grand</h3>
+          <p class="lede">Hiranagar, Jammu</p>
+          <a class="btn" href="https://share.google/hMVSz7YfywpmdWzsA" target="_blank" rel="noopener">OPEN IN MAPS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap closing reveal">
+    <div class="rule"></div>
+    <p class="lede" style="margin:0 auto">We cannot wait to celebrate this day with you. Thank you for being part of our story and for blessing us as we begin forever.</p>
+    <div class="label" style="margin-top:22px">With love, gratitude and blessings</div>
+    <div class="sig">Sandeep &amp; Saravjit</div>
+  </section>
+  <footer>11 – 13 · 12 · 2026 &nbsp;·&nbsp; HIRANAGAR</footer>
+</main>
+
+<script>
+// ===== Edit these =====
+const WEDDING = new Date("2026-12-12T10:00:00+05:30");
+// ======================
+
+document.documentElement.classList.add("js");
+
+// curtain
+const curtain=document.getElementById("curtain");
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function openCurtain(){ if(curtain.classList.contains("open"))return;
+  curtain.classList.add("open"); curtain.setAttribute("aria-hidden","true");
+  setTimeout(()=>curtain.classList.add("gone"), reduce?0:1700); }
+document.getElementById("tap").addEventListener("click",openCurtain);
+if(reduce) openCurtain(); else setTimeout(openCurtain,3500);
+
+// countdown
+function tick(){ let ms=WEDDING-Date.now(); if(ms<0)ms=0;
+  const d=Math.floor(ms/864e5), h=Math.floor(ms/36e5)%24, m=Math.floor(ms/6e4)%60;
+  document.getElementById("cd-d").textContent=d;
+  document.getElementById("cd-h").textContent=String(h).padStart(2,"0");
+  document.getElementById("cd-m").textContent=String(m).padStart(2,"0"); }
+tick(); setInterval(tick,30000);
+
+// gentle reveal (visible by default; only below-the-fold sections animate)
+if("IntersectionObserver" in window && !reduce){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){e.target.classList.remove("pending");io.unobserve(e.target);} }),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>{ const r=el.getBoundingClientRect(); if(r.top>innerHeight){el.classList.add("pending");io.observe(el);} });
+}
+
+</script>
+
+</body>
+</html>
