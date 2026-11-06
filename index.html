@@ -105,6 +105,18 @@ p{margin:0 0 1em}
 .mono::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(217,166,80,.45);animation:spin 40s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* ---------- couple portrait ---------- */
+.portrait{margin:0 auto;max-width:400px;text-align:center}
+.portrait .frame{position:relative;padding:10px;border:1px solid var(--gold);border-radius:999px 999px 10px 10px;background:rgba(20,4,11,.5);
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 60px rgba(217,166,80,.15)}
+.portrait .frame::before{content:"";position:absolute;inset:4px;border:1px solid rgba(217,166,80,.35);border-radius:999px 999px 7px 7px;pointer-events:none;z-index:1}
+.portrait .frame::after{content:"";position:absolute;inset:10px;border-radius:999px 999px 4px 4px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(240,200,120,.10),transparent 40%,rgba(58,13,28,.35));mix-blend-mode:multiply}
+.portrait img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:900/1032;object-fit:cover;border-radius:999px 999px 4px 4px;filter:sepia(.18) contrast(1.03)}
+.portrait .star{position:absolute;top:-10px;left:50%;width:18px;height:18px;transform:translateX(-50%) rotate(45deg);background:var(--night);border:1px solid var(--gold);z-index:2}
+.portrait figcaption{margin-top:20px;font-style:italic;color:var(--muted)}
+.portrait figcaption b{display:block;font-family:var(--f-label);font-style:normal;font-weight:400;letter-spacing:.24em;font-size:.76rem;color:var(--gold);margin-bottom:6px}
+
 /* ---------- card ---------- */
 .card{position:relative;background:linear-gradient(180deg,#fffaf0,var(--ivory) 60%,#f7e6d0);color:var(--ink);border-radius:8px;padding:70px 34px 120px;text-align:center;overflow:hidden;
   box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(217,166,80,.4)}
@@ -262,6 +274,15 @@ footer{position:relative;z-index:2;text-align:center;padding-block:20px 90px;col
     </div>
     <a class="scroll" href="#invite">SCROLL DOWN<i></i></a>
   </header>
+
+  <section class="wrap reveal" id="couple">
+    <figure class="portrait">
+      <div class="frame"><span class="star" aria-hidden="true"></span>
+        <img src="couple.jpg" width="900" height="1032" alt="Saravjit and Sandeep, foreheads touching, holding their engagement rings" loading="lazy" decoding="async">
+      </div>
+      <figcaption><b>Two hearts, one path</b>Bound by love, blessed by Waheguru</figcaption>
+    </figure>
+  </section>
 
   <section class="wrap reveal" id="invite">
     <div class="mono" style="margin-bottom:26px">SS</div>
