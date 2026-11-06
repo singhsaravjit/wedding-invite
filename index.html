@@ -175,6 +175,25 @@ p{margin:0 0 1em}
 footer{position:relative;z-index:2;text-align:center;padding-block:20px 90px;color:var(--muted);font-family:var(--f-label);letter-spacing:.24em;font-size:.7rem}
 
 
+/* our shabad */
+.yt-frame{position:relative;margin:26px auto 14px;padding:10px;border:1px solid var(--gold);border-radius:8px;background:rgba(20,4,11,.6);box-shadow:0 0 50px rgba(217,166,80,.18)}
+.yt-frame::before{content:"";position:absolute;inset:4px;border:1px solid rgba(217,166,80,.25);border-radius:6px;pointer-events:none}
+.yt-box{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:4px;overflow:hidden;background:#000}
+.yt-box iframe,#yt{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-link{color:var(--gold);font-family:var(--f-label);letter-spacing:.16em;font-size:.76rem;text-decoration:none;border-bottom:1px solid rgba(217,166,80,.5)}
+/* music button */
+.music{position:fixed;z-index:40;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);background:rgba(20,4,11,.85);color:var(--gold-soft);cursor:pointer;
+  display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4);backdrop-filter:blur(4px)}
+.music:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+.music svg{width:22px;height:22px}
+.music .bars{display:flex;gap:3px;align-items:flex-end;height:18px}
+.music .bars i{width:3px;background:var(--gold);border-radius:1px;height:30%;animation:eq 1s ease-in-out infinite}
+.music .bars i:nth-child(2){animation-delay:.2s}.music .bars i:nth-child(3){animation-delay:.4s}.music .bars i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:30%}50%{height:100%}}
+.music.paused .bars{display:none}.music:not(.paused) .play{display:none}
+.music .hint{position:absolute;right:60px;white-space:nowrap;font-family:var(--f-label);font-size:.7rem;letter-spacing:.15em;color:var(--gold-soft);background:rgba(20,4,11,.85);padding:6px 10px;border-radius:3px;border:1px solid rgba(217,166,80,.35)}
+.music:not(.paused) .hint{display:none}
 /* reveal */
 .reveal{transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.pending{opacity:.001;transform:translateY(34px)}
@@ -189,6 +208,12 @@ footer{position:relative;z-index:2;text-align:center;padding-block:20px 90px;col
   <button class="seal" id="tap" type="button" aria-label="Tap to open the invitation"><span>S&nbsp;S</span><small>TAP TO OPEN</small></button>
 </div>
 
+
+<button class="music paused" id="music" type="button" aria-label="Play shabad" aria-pressed="false">
+  <span class="hint">PLAY SHABAD</span>
+  <svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -270,6 +295,14 @@ footer{position:relative;z-index:2;text-align:center;padding-block:20px 90px;col
       </g></svg>
     </div>
     <p class="held">An invitation held in bloom</p>
+  </section>
+
+  <section class="wrap reveal center" id="song">
+    <div class="label">Our shabad</div>
+    <h2>Ik Onkar Nanak</h2>
+    <p class="lede">The shabad that carries our families' blessings into this celebration.</p>
+    <div class="yt-frame"><div class="yt-box"><div id="yt"></div></div></div>
+    <a class="yt-link" href="https://www.youtube.com/watch?v=XWKtCrBKdOo" target="_blank" rel="noopener">WATCH ON YOUTUBE</a>
   </section>
 
   <section class="wrap reveal" id="events">
@@ -381,9 +414,29 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const curtain=document.getElementById("curtain");
 function openCurtain(){ if(curtain.classList.contains("open"))return;
   curtain.classList.add("open"); setTimeout(()=>curtain.classList.add("gone"), reduce?0:1900); }
-if(reduce) openCurtain(); else setTimeout(openCurtain,4000);
+if(reduce) openCurtain(); else setTimeout(openCurtain,10000);
 
 document.getElementById("tap").addEventListener("click",openCurtain);
+
+// ---- our shabad: official YouTube player, started by the curtain tap ----
+const VIDEO_ID="XWKtCrBKdOo";
+const mBtn=document.getElementById("music");
+let player=null, ytReady=false, wantPlay=false;
+function setPlaying(on){ mBtn.classList.toggle("paused",!on); mBtn.setAttribute("aria-pressed",String(on)); mBtn.setAttribute("aria-label",on?"Pause shabad":"Play shabad"); }
+window.onYouTubeIframeAPIReady=function(){
+  player=new YT.Player("yt",{videoId:VIDEO_ID,playerVars:{rel:0,playsinline:1,loop:1,playlist:VIDEO_ID},
+    events:{onReady:()=>{ ytReady=true; if(wantPlay) player.playVideo(); },
+            onStateChange:e=>setPlaying(e.data===YT.PlayerState.PLAYING||e.data===YT.PlayerState.BUFFERING)}});
+};
+(function(){ const t=document.createElement("script"); t.src="https://www.youtube.com/iframe_api"; t.async=true;
+  t.onerror=()=>{ const b=document.querySelector(".yt-box"); b.innerHTML='<a href="https://www.youtube.com/watch?v='+VIDEO_ID+'" target="_blank" rel="noopener" style="position:absolute;inset:0;display:grid;place-items:center;color:var(--gold-soft);font-family:var(--f-label);letter-spacing:.16em;text-decoration:none;background:center/cover url(https://i.ytimg.com/vi/'+VIDEO_ID+'/hqdefault.jpg)"><span style="background:rgba(20,4,11,.8);padding:12px 18px;border:1px solid var(--gold)">PLAY ON YOUTUBE</span></a>'; };
+  document.head.appendChild(t); })();
+function playShabad(){ wantPlay=true; if(ytReady) player.playVideo(); }
+mBtn.addEventListener("click",()=>{
+  if(!ytReady){ document.getElementById("song").scrollIntoView({behavior:"smooth",block:"center"}); return; }
+  player.getPlayerState()===YT.PlayerState.PLAYING ? player.pauseVideo() : player.playVideo();
+});
+document.getElementById("tap").addEventListener("click",playShabad);
 
 // ---- countdown ----
 function tick(){ let ms=WEDDING-Date.now(); if(ms<0)ms=0;
