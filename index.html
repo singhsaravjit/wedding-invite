@@ -152,9 +152,9 @@ footer{text-align:center;padding-block:30px 50px;color:var(--muted);font-family:
   <button class="tap" id="tap" type="button"><span class="ek" aria-hidden="true">ੴ</span>TAP TO OPEN</button>
 </div>
 
-<audio id="shabad" src="shabad.mp3" preload="none" loop></audio>
-<button class="music paused" id="music" type="button" aria-label="Play shabad" aria-pressed="false">
-  <span class="hint">PLAY SHABAD</span>
+<audio id="shabad" src="shehnai.mp3" preload="none" loop></audio>
+<button class="music paused" id="music" type="button" aria-label="Play music" aria-pressed="false">
+  <span class="hint">PLAY MUSIC</span>
   <svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
   <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
 </button>
@@ -266,7 +266,7 @@ function openCurtain(){ if(curtain.classList.contains("open"))return;
   setTimeout(()=>curtain.classList.add("gone"), reduce?0:1700); }
 // music: starts when the guest taps the curtain (browsers need a tap before sound)
 const audio=document.getElementById("shabad"), mBtn=document.getElementById("music");
-function setPlaying(on){ mBtn.classList.toggle("paused",!on); mBtn.setAttribute("aria-pressed",String(on)); mBtn.setAttribute("aria-label",on?"Pause shabad":"Play shabad"); }
+function setPlaying(on){ mBtn.classList.toggle("paused",!on); mBtn.setAttribute("aria-pressed",String(on)); mBtn.setAttribute("aria-label",on?"Pause music":"Play music"); }
 function play(){ audio.volume=.7; audio.play().then(()=>setPlaying(true)).catch(()=>setPlaying(false)); }
 audio.addEventListener("pause",()=>setPlaying(false));
 mBtn.addEventListener("click",()=>{ audio.paused?play():audio.pause(); });

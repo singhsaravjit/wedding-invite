@@ -1,5 +1,5 @@
 # Credits
 
-**Music:** "Aaise Gur Kau Bal Bal Jaieeaai" by Ustaad Baljit Singh Ji (Naamdhari).
-Source: https://archive.org/details/aaise-gur-kau-bal-bal-jaieeaai-ustaad-baljit-singh-ji
-Listed there under the Public Domain Mark 1.0. The first 5 minutes are used here, with a fade in and out.
+**Music:** "Slightly Shehnai" by Musical Meanderings, from the album *Organic Oddities*.
+Source: https://freemusicarchive.org/music/musical-meanderings/organic-oddities/slightly-shehnai/
+Licensed under CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/). Re-encoded at a lower bitrate, with volume levelled. Used here on a personal, non-commercial wedding invitation.
